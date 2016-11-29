@@ -9,9 +9,9 @@ using ConsumerConsoleApp.Models;
 
 namespace ConsumerConsoleApp
 {
-    public class AppDbContext : DbContext
+    public partial class BusinessDbContext : DbContext
     {
-        public AppDbContext() : base("DefaultConnection")
+        public BusinessDbContext() : base("DefaultConnection")
         {
             
         }

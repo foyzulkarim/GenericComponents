@@ -10,11 +10,11 @@ using Commons.ViewModel;
 
 namespace Commons.Service
 {
-    public abstract class BaseService<T, TRm, TVm> : IBaseService<T> where T : Entity where TRm : RequestModel<T> where TVm : BaseViewModel<T>
+    public class BaseService<T, TRm, TVm> : IBaseService<T> where T : Entity where TRm : RequestModel<T> where TVm : BaseViewModel<T>
     {
         protected BaseRepository<T> Repository;
 
-        protected BaseService(BaseRepository<T> repository)
+        public BaseService(BaseRepository<T> repository)
         {
             Repository = repository;
         }

@@ -7,11 +7,11 @@ using Commons.Model;
 
 namespace Commons.Repository
 {
-    public abstract class BaseRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         public BusinessDbContext Db;
 
-        protected BaseRepository(DbContext db)
+        public BaseRepository(DbContext db)
         {
             Db = db as BusinessDbContext;
         }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Commons.Model
 {
-    public class BusinessDbContext : DbContext
+    public partial class BusinessDbContext : DbContext
     {
         public BusinessDbContext() : base("DefaultConnection")
         {

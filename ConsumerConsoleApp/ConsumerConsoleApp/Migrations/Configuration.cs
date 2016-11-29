@@ -5,14 +5,14 @@ namespace ConsumerConsoleApp.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ConsumerConsoleApp.AppDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ConsumerConsoleApp.BusinessDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ConsumerConsoleApp.AppDbContext context)
+        protected override void Seed(ConsumerConsoleApp.BusinessDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
