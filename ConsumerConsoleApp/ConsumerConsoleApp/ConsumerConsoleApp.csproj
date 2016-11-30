@@ -56,7 +56,12 @@
     <Compile Include="Migrations\201611281707285_Student-Added.Designer.cs">
       <DependentUpon>201611281707285_Student-Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611300211096_Department-Added.cs" />
+    <Compile Include="Migrations\201611300211096_Department-Added.Designer.cs">
+      <DependentUpon>201611300211096_Department-Added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Departments\Department.cs" />
     <Compile Include="Models\Students\Student.cs" />
     <Compile Include="Models\Students\StudentRequestModel.cs" />
     <Compile Include="Models\Students\StudentViewModel.cs" />
@@ -70,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611281707285_Student-Added.resx">
       <DependentUpon>201611281707285_Student-Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611300211096_Department-Added.resx">
+      <DependentUpon>201611300211096_Department-Added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,7 @@ using Commons.RequestModel;
 using Commons.Service;
 using Commons.ViewModel;
 using ConsumerConsoleApp.Models;
+using ConsumerConsoleApp.Models.Departments;
 using ConsumerConsoleApp.Models.Students;
 
 namespace ConsumerConsoleApp
@@ -17,36 +18,38 @@ namespace ConsumerConsoleApp
         static void Main(string[] args)
         {
             var db = new BusinessDbContext();
-            var repo = new BaseRepository<Student>(db);
-            var studentService = new BaseService<Student,StudentRequestModel, StudentViewModel>(repo);
-            Student student = new Student()
+            var departmentRepo = new BaseRepository<Department>(db);
+            var departmentService = new BaseService<Department,DepartmentRequestModel,DepartmetnViewModel>(departmentRepo);
+
+            // we set the fake values here
+            var department = new Department()
             {
                 Id = Guid.NewGuid().ToString(),
+                Name = "department-" + DateTime.Now.Ticks,
                 Created = DateTime.Now,
                 Modified = DateTime.Now,
-                CreatedBy = "me",
-                ModifiedBy = "me",
-                Name = "temp-" + DateTime.Now.Ticks,
-                Phone = DateTime.Now.Ticks.ToString()
+                CreatedBy = "foyzulkarim@gmail.com",
+                ModifiedBy = "foyzulkarim@gmail.com"
             };
-            //service.Add(student);
+            departmentService.Add(department);
 
-            try
+            //now lets fetch those all
+            //var departments = departmentService.GetAllAsync().GetAwaiter().GetResult();
+            //foreach (var d in departments)
+            //{
+            //    Console.WriteLine(d.Name);
+            //}
+
+            // now lets search by keyword
+            Console.WriteLine("Input your keyword and press Enter: ");
+            var keyword = Console.ReadLine();
+
+            DepartmentRequestModel request=new DepartmentRequestModel(keyword);
+            var result = departmentService.SearchAsync(request).GetAwaiter().GetResult();
+            Console.WriteLine("Search result : "+result.Item2);
+            foreach (var viewModel in result.Item1)
             {
-                Console.WriteLine("Input your keyword and press Enter: ");
-                var keyword = Console.ReadLine();
-              //  List<StudentViewModel> list = studentService.GetAllAsync().GetAwaiter().GetResult();
-                StudentRequestModel request=new StudentRequestModel(keyword);
-                var searchResult = studentService.SearchAsync(request).GetAwaiter().GetResult();
-                Console.WriteLine("Result found: "+searchResult.Item2);
-                foreach (var vm in searchResult.Item1)
-                {
-                    Console.WriteLine(vm.Name + "\t"+ vm.Phone);
-                }
-            }
-            catch (Exception exception)
-            {                
-                throw;
+                Console.WriteLine(viewModel.Name);
             }
             Console.Read();
         }
