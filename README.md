@@ -5,3 +5,4 @@ Every application, let it be a desktop, web, mobile or any other you can image, 
 
 How you can use this library
 <a href="https://youtu.be/5uRg63w0tG4" target="_blank">Part 1</a>
+<a target="_blank" href="https://youtu.be/5uRg63w0tG4">Link</a>
