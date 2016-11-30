@@ -60,12 +60,19 @@ namespace Commons.Service
             var count = await queryable.CountAsync();
             return count;
         }
-        
+
+        //public async Task<List<TVm>> GetAllAsync()
+        //{
+        //    return await Repository.Get().Select(x => (TVm)Activator.CreateInstance(typeof(TVm), x)).ToListAsync();
+        //}
+
         public async Task<List<TVm>> GetAllAsync()
         {
-            return await Repository.Get().Select(x => (TVm)Activator.CreateInstance(typeof(TVm), x)).ToListAsync();
+            var queryable = await Repository.Get().ToListAsync();
+            var vms = queryable.Select(x => (TVm) Activator.CreateInstance(typeof(TVm), new object[] {x}));
+            return  vms.ToList();
         }
-         
+
         public async Task<Tuple<List<TVm>,int>> SearchAsync(TRm request)
         {
             var queryable = request.GetOrderedData(Repository.Get());

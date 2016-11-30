@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Commons.Model;
 using ConsumerConsoleApp.Models;
+using ConsumerConsoleApp.Models.Students;
 
 namespace ConsumerConsoleApp
 {
-    public partial class BusinessDbContext : DbContext
+    public class BusinessDbContext : DbContext
     {
         public BusinessDbContext() : base("DefaultConnection")
         {

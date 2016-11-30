@@ -14,10 +14,6 @@ namespace Commons.ViewModel
             ModifiedBy = x.ModifiedBy;
         }
 
-        protected BaseViewModel()
-        {
-        }
-
         public string Id { get; set; }
 
         public DateTime Created { get; set; }

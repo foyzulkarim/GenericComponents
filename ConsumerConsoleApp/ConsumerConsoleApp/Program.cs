@@ -8,6 +8,7 @@ using Commons.RequestModel;
 using Commons.Service;
 using Commons.ViewModel;
 using ConsumerConsoleApp.Models;
+using ConsumerConsoleApp.Models.Students;
 
 namespace ConsumerConsoleApp
 {
@@ -17,7 +18,7 @@ namespace ConsumerConsoleApp
         {
             var db = new BusinessDbContext();
             var repo = new BaseRepository<Student>(db);
-            var service = new BaseService<Student,RequestModel<Student>,BaseViewModel<Student>>(repo);
+            var studentService = new BaseService<Student,StudentRequestModel, StudentViewModel>(repo);
             Student student = new Student()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -28,10 +29,26 @@ namespace ConsumerConsoleApp
                 Name = "temp-" + DateTime.Now.Ticks,
                 Phone = DateTime.Now.Ticks.ToString()
             };
-            service.Add(student);
-            
-            List<BaseViewModel<Student>> list = service.GetAllAsync().GetAwaiter().GetResult();
+            //service.Add(student);
 
+            try
+            {
+                Console.WriteLine("Input your keyword and press Enter: ");
+                var keyword = Console.ReadLine();
+              //  List<StudentViewModel> list = studentService.GetAllAsync().GetAwaiter().GetResult();
+                StudentRequestModel request=new StudentRequestModel(keyword);
+                var searchResult = studentService.SearchAsync(request).GetAwaiter().GetResult();
+                Console.WriteLine("Result found: "+searchResult.Item2);
+                foreach (var vm in searchResult.Item1)
+                {
+                    Console.WriteLine(vm.Name + "\t"+ vm.Phone);
+                }
+            }
+            catch (Exception exception)
+            {                
+                throw;
+            }
+            Console.Read();
         }
     }
 }

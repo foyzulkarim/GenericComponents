@@ -9,11 +9,11 @@ namespace Commons.Repository
 {
     public class BaseRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        public BusinessDbContext Db;
+        public DbContext Db;
 
         public BaseRepository(DbContext db)
         {
-            Db = db as BusinessDbContext;
+            Db = db;
         }
 
         public virtual IQueryable<TEntity> Filter(
