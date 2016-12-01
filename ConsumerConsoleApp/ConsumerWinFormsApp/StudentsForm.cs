@@ -55,21 +55,13 @@ namespace ConsumerWinFormsApp
             BaseRepository<Student> repository = new BaseRepository<Student>(new BusinessDbContext());
             service = new BaseService<Student, StudentRequestModel, StudentViewModel>(repository);
             request = new StudentRequestModel("");
-            searchButton.DataBindings.Add("Text", request, "Keyword");
-            ReloadStudents();
-        }
+            searchTextBox.DataBindings.Add("Text", request, "Keyword");
+            
+        }       
 
-        private async void ReloadStudents()
+        private  void studentListTabPage_Enter(object sender, EventArgs e)
         {
-            var studentViewModels = await service.GetAllAsync();
-            var list = studentViewModels.Select(x => new { x.Name, x.Phone, x.Modified }).ToList();
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = list;
-        }
-
-        private void studentListTabPage_Enter(object sender, EventArgs e)
-        {
-            ReloadStudents();
+             SearchStudents();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -77,13 +69,11 @@ namespace ConsumerWinFormsApp
             SearchStudents();
         }
 
-        private async void SearchStudents()
-        {
-            // we will refactor it.
-            var result = await service.SearchAsync(request);
-            var list = result.Item1.Select(x => new { x.Name, x.Phone, x.Modified }).ToList();
+        private async Task SearchStudents()
+        {         
+            var result = await service.SearchAsync(request);         
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = list;
+            dataGridView1.DataSource = result.Item1;            
         }
     }
 }
