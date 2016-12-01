@@ -1,6 +1,6 @@
 using Commons.ViewModel;
 
-namespace ConsumerConsoleApp.Models.Students
+namespace ApplicationLibrary.Models.Students
 {
     public class StudentViewModel : BaseViewModel<Student>
     {

@@ -1,18 +1,15 @@
-namespace ConsumerConsoleApp.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ConsumerConsoleApp.BusinessDbContext>
+namespace ApplicationLibrary.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<BusinessDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ConsumerConsoleApp.BusinessDbContext context)
+        protected override void Seed(BusinessDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

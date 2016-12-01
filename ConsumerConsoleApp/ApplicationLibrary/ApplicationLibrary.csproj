@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BD0B7147-A4D4-46D8-AE35-1EA65B6F34F4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{EB368842-53B0-4F00-B7A0-39D921FF9393}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsumerConsoleApp</RootNamespace>
-    <AssemblyName>ConsumerConsoleApp</AssemblyName>
+    <RootNamespace>ApplicationLibrary</RootNamespace>
+    <AssemblyName>ApplicationLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -51,24 +49,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BusinessDbContext.cs" />
+    <Compile Include="Migrations\201611281707285_Student-Added.cs" />
+    <Compile Include="Migrations\201611281707285_Student-Added.Designer.cs">
+      <DependentUpon>201611281707285_Student-Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611300211096_Department-Added.cs" />
+    <Compile Include="Migrations\201611300211096_Department-Added.Designer.cs">
+      <DependentUpon>201611300211096_Department-Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Departments\Department.cs" />
+    <Compile Include="Models\Departments\DepartmentRequestModel.cs" />
+    <Compile Include="Models\Departments\DepartmetnViewModel.cs" />
+    <Compile Include="Models\Students\Student.cs" />
+    <Compile Include="Models\Students\StudentRequestModel.cs" />
+    <Compile Include="Models\Students\StudentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611281707285_Student-Added.resx">
+      <DependentUpon>201611281707285_Student-Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611300211096_Department-Added.resx">
+      <DependentUpon>201611300211096_Department-Added.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Commons\Commons\Commons.csproj">
-      <Project>{482131E7-7567-4540-BC11-7125957E7FF5}</Project>
+      <Project>{482131e7-7567-4540-bc11-7125957e7ff5}</Project>
       <Name>Commons</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ApplicationLibrary\ApplicationLibrary.csproj">
-      <Project>{EB368842-53B0-4F00-B7A0-39D921FF9393}</Project>
-      <Name>ApplicationLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

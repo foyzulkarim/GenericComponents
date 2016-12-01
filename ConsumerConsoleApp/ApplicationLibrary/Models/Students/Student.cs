@@ -1,6 +1,6 @@
 ﻿using Commons.Model;
 
-namespace ConsumerConsoleApp.Models.Students
+namespace ApplicationLibrary.Models.Students
 {
     public class Student : Entity
     {

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationLibrary;
+using ApplicationLibrary.Models.Departments;
 using Commons.Repository;
 using Commons.RequestModel;
 using Commons.Service;
-using Commons.ViewModel;
-using ConsumerConsoleApp.Models;
-using ConsumerConsoleApp.Models.Departments;
-using ConsumerConsoleApp.Models.Students;
 
 namespace ConsumerConsoleApp
 {

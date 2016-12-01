@@ -1,18 +1,18 @@
-namespace ConsumerConsoleApp.Migrations
+using System.Data.Entity.Migrations;
+
+namespace ApplicationLibrary.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
-    public partial class DepartmentAdded : DbMigration
+    public partial class StudentAdded : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Departments",
+                "dbo.Students",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(),
+                        Phone = c.String(),
                         Created = c.DateTime(nullable: false),
                         CreatedBy = c.String(nullable: false),
                         Modified = c.DateTime(nullable: false),
@@ -24,7 +24,7 @@ namespace ConsumerConsoleApp.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.Departments");
+            DropTable("dbo.Students");
         }
     }
 }

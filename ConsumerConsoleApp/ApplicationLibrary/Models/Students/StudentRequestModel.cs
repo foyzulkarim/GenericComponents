@@ -2,7 +2,7 @@ using System;
 using System.Linq.Expressions;
 using Commons.RequestModel;
 
-namespace ConsumerConsoleApp.Models.Students
+namespace ApplicationLibrary.Models.Students
 {
     public class StudentRequestModel : RequestModel<Student>
     {
