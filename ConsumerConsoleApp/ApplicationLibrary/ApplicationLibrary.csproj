@@ -50,13 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessDbContext.cs" />
-    <Compile Include="Migrations\201611281707285_Student-Added.cs" />
-    <Compile Include="Migrations\201611281707285_Student-Added.Designer.cs">
-      <DependentUpon>201611281707285_Student-Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611300211096_Department-Added.cs" />
-    <Compile Include="Migrations\201611300211096_Department-Added.Designer.cs">
-      <DependentUpon>201611300211096_Department-Added.cs</DependentUpon>
+    <Compile Include="Migrations\201612030350205_StudentDepartment.cs" />
+    <Compile Include="Migrations\201612030350205_StudentDepartment.Designer.cs">
+      <DependentUpon>201612030350205_StudentDepartment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Departments\Department.cs" />
@@ -68,14 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611281707285_Student-Added.resx">
-      <DependentUpon>201611281707285_Student-Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611300211096_Department-Added.resx">
-      <DependentUpon>201611300211096_Department-Added.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -84,6 +72,11 @@
       <Project>{482131e7-7567-4540-bc11-7125957e7ff5}</Project>
       <Name>Commons</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612030350205_StudentDepartment.resx">
+      <DependentUpon>201612030350205_StudentDepartment.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
