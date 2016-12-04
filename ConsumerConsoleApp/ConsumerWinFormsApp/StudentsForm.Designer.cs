@@ -40,14 +40,14 @@ namespace ConsumerWinFormsApp
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.saveButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.departmentComboBox = new System.Windows.Forms.ComboBox();
             this.studentListTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.departmentComboBox = new System.Windows.Forms.ComboBox();
             this.studentTabControl.SuspendLayout();
             this.studentEntryTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -169,6 +169,25 @@ namespace ConsumerWinFormsApp
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label3.Location = new System.Drawing.Point(100, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 30);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Departments";
+            // 
+            // departmentComboBox
+            // 
+            this.departmentComboBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.departmentComboBox.FormattingEnabled = true;
+            this.departmentComboBox.Location = new System.Drawing.Point(195, 83);
+            this.departmentComboBox.Name = "departmentComboBox";
+            this.departmentComboBox.Size = new System.Drawing.Size(387, 24);
+            this.departmentComboBox.TabIndex = 6;
+            // 
             // studentListTabPage
             // 
             this.studentListTabPage.Controls.Add(this.tableLayoutPanel2);
@@ -236,26 +255,6 @@ namespace ConsumerWinFormsApp
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
-        
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Location = new System.Drawing.Point(100, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 30);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Departments";
-            // 
-            // departmentComboBox
-            // 
-            this.departmentComboBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.departmentComboBox.FormattingEnabled = true;
-            this.departmentComboBox.Location = new System.Drawing.Point(195, 83);
-            this.departmentComboBox.Name = "departmentComboBox";
-            this.departmentComboBox.Size = new System.Drawing.Size(387, 24);
-            this.departmentComboBox.TabIndex = 6;
             // 
             // StudentsForm
             // 
@@ -266,8 +265,7 @@ namespace ConsumerWinFormsApp
             this.Name = "StudentsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "StudentsForm";
-            
-           
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.studentTabControl.ResumeLayout(false);
             this.studentEntryTabPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
