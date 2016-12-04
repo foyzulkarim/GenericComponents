@@ -1,4 +1,6 @@
-﻿namespace ConsumerWinFormsApp
+﻿using System;
+
+namespace ConsumerWinFormsApp
 {
     partial class StudentsForm
     {
@@ -156,7 +158,6 @@
             this.saveButton.TabIndex = 0;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // clearButton
             // 
@@ -178,7 +179,7 @@
             this.studentListTabPage.TabIndex = 1;
             this.studentListTabPage.Text = "Students List";
             this.studentListTabPage.UseVisualStyleBackColor = true;
-            this.studentListTabPage.Enter += new System.EventHandler(this.studentListTabPage_Enter);
+            this.studentListTabPage.Enter += new System.EventHandler(this.modelListTabPage_Enter);
             // 
             // tableLayoutPanel2
             // 
@@ -235,7 +236,7 @@
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+        
             // 
             // label3
             // 
@@ -265,7 +266,8 @@
             this.Name = "StudentsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "StudentsForm";
-            this.Load += new System.EventHandler(this.StudentsForm_Load);
+            
+           
             this.studentTabControl.ResumeLayout(false);
             this.studentEntryTabPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -13,5 +13,12 @@ namespace ApplicationLibrary
         public DbSet<Student> Students { get; set; }
 
         public DbSet<Department> Departments { get; set; }
+
+
+        private static BusinessDbContext _db;
+        public static BusinessDbContext CreateInstance()
+        {
+            return _db ?? (_db = new BusinessDbContext());
+        }
     }
 }

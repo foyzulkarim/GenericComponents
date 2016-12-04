@@ -1,44 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ApplicationLibrary;
+using ApplicationLibrary.Factory;
 using ApplicationLibrary.Models.Departments;
 using ApplicationLibrary.Models.Students;
-using Commons.Repository;
 using Commons.Service;
 using Commons.ViewModel;
 
 namespace ConsumerWinFormsApp
 {
-    public partial class StudentsForm : Form
+    public partial class StudentsForm : Form, IGenericForm<Student, StudentRequestModel, StudentViewModel>
     {
-        BaseService<Student, StudentRequestModel, StudentViewModel> studentService;
+        BaseService<Student, StudentRequestModel, StudentViewModel> service;
         BaseService<Department, DepartmentRequestModel, DepartmetnViewModel> departmentService;
-        private StudentRequestModel studentRequestModel;
-        
+        StudentRequestModel studentRequestModel;
+
         public StudentsForm()
         {
             InitializeComponent();
+            Load += Form_Load;
+            saveButton.Click += saveButton_Click;
+            searchButton.Click += searchButton_Click;
+        }
+
+        public void Form_Load(object sender, EventArgs e)
+        {
+            Factory.CreateService(out service);
+            Factory.CreateService(out departmentService);
+
+            studentRequestModel = new StudentRequestModel("");
+            searchTextBox.DataBindings.Add("Text", studentRequestModel, "Keyword");
+            
+            List<DropdownViewModel> departments = departmentService.GetDropdownListAsync(new DepartmentRequestModel());
+            LoadDropdown(departments);
+        }
+
+        private void LoadDropdown(List<DropdownViewModel> departments)
+        {
+            departmentComboBox.DataSource = departments;
+            departmentComboBox.DisplayMember = "Text";
+            departmentComboBox.ValueMember = "Id";
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Student student = new Student();
-            student.Name = nameTextBox.Text;
-            student.Phone = phoneTextBox.Text;
-            student.Id = Guid.NewGuid().ToString();
-            student.Created = DateTime.Now;
-            student.Modified = DateTime.Now;
-            student.CreatedBy = "me";
-            student.ModifiedBy = "me";
-            student.DepartmentId = departmentComboBox.SelectedValue.ToString();
-            studentService.Add(student);
+            var m = CreateModel();
+            service.Add(m);
             MessageBox.Show("Saved");
             ClearForm();
         }
@@ -48,42 +56,39 @@ namespace ConsumerWinFormsApp
             ClearForm();
         }
 
-        private void ClearForm()
+        public void ClearForm()
         {
             nameTextBox.Clear();
             phoneTextBox.Clear();
         }
 
-        private void StudentsForm_Load(object sender, EventArgs e)
+        private void modelListTabPage_Enter(object sender, EventArgs e)
         {
-            BusinessDbContext dbContext = new BusinessDbContext();
-            BaseRepository<Student> studentRepository = new BaseRepository<Student>(dbContext);
-            studentService = new BaseService<Student, StudentRequestModel, StudentViewModel>(studentRepository);
-            studentRequestModel = new StudentRequestModel("");
-            searchTextBox.DataBindings.Add("Text", studentRequestModel, "Keyword");
-            var departmentRepository = new BaseRepository<Department>(dbContext);
-            departmentService = new BaseService<Department, DepartmentRequestModel, DepartmetnViewModel>(departmentRepository);
-            List<DropdownViewModel> departments = departmentService.GetDropdownListAsync(new DepartmentRequestModel());
-            departmentComboBox.DataSource = departments;
-            departmentComboBox.DisplayMember = "Text";
-            departmentComboBox.ValueMember = "Id";
-        }       
-
-        private  void studentListTabPage_Enter(object sender, EventArgs e)
-        {
-             SearchStudents();
+            LoadGridView();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            SearchStudents();
+            LoadGridView();
         }
 
-        private async Task SearchStudents()
-        {         
-            var result = await studentService.SearchAsync(studentRequestModel);         
+        public async Task LoadGridView()
+        {
+            var result = await service.SearchAsync(studentRequestModel);
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = result.Item1;            
+            dataGridView1.DataSource = result.Item1;
         }
+
+        public Student CreateModel()
+        {
+            Student student = new Student
+            {
+                Name = nameTextBox.Text,
+                Phone = phoneTextBox.Text,
+                DepartmentId = departmentComboBox.SelectedValue.ToString()
+            };
+            student.SetCommonValues();
+            return student;
+        }       
     }
 }

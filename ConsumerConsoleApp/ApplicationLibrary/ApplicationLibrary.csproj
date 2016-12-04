@@ -62,6 +62,7 @@
     <Compile Include="Models\Departments\Department.cs" />
     <Compile Include="Models\Departments\DepartmentRequestModel.cs" />
     <Compile Include="Models\Departments\DepartmetnViewModel.cs" />
+    <Compile Include="Factory\Factory.cs" />
     <Compile Include="Models\Students\Student.cs" />
     <Compile Include="Models\Students\StudentRequestModel.cs" />
     <Compile Include="Models\Students\StudentViewModel.cs" />
@@ -85,6 +86,7 @@
       <DependentUpon>201612040332398_dontknowwhatischagned.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
