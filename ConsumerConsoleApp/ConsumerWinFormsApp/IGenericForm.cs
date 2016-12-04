@@ -8,10 +8,11 @@ using Commons.ViewModel;
 
 namespace ConsumerWinFormsApp
 {
-    public interface IGenericForm<T, TRm, TVm> where TVm : BaseViewModel<T> where TRm : RequestModel<T> where T : Entity
+    public interface IGenericForm<T> where T : Entity
     {
         T CreateModel();
         void ClearForm();   
         Task LoadGridView();
+        void LoadDropdown();
     }
 }

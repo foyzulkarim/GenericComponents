@@ -62,7 +62,6 @@
     <Compile Include="Models\Departments\Department.cs" />
     <Compile Include="Models\Departments\DepartmentRequestModel.cs" />
     <Compile Include="Models\Departments\DepartmetnViewModel.cs" />
-    <Compile Include="Factory\Factory.cs" />
     <Compile Include="Models\Students\Student.cs" />
     <Compile Include="Models\Students\StudentRequestModel.cs" />
     <Compile Include="Models\Students\StudentViewModel.cs" />
