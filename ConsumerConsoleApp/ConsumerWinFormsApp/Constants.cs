@@ -8,13 +8,14 @@ namespace ConsumerWinFormsApp
     {
         public static string UserName { get; set; }
 
-        public static void SetCommonValues(this Entity entity)
+        public static Entity SetCommonValues(this Entity entity)
         {
             entity.Id = Guid.NewGuid().ToString();
             entity.Created = DateTime.Now;
             entity.Modified = DateTime.Now;
             entity.CreatedBy = Constants.UserName;
             entity.ModifiedBy = Constants.UserName;
+            return entity;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ApplicationLibrary.Models.Departments;
 using ApplicationLibrary.Models.Students;
+using Commons.Model;
 using Commons.Service;
 using Commons.ViewModel;
 
@@ -32,10 +33,17 @@ namespace ConsumerWinFormsApp
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            var m = CreateModel();
-            App.StudentService.Add(m);
-            MessageBox.Show("Saved");
-            ClearForm();
+            try
+            {
+                var m = CreateModel();
+                App.StudentService.Add(m);
+                MessageBox.Show("Saved");
+                ClearForm();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error Occurred");
+            }
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -80,14 +88,37 @@ namespace ConsumerWinFormsApp
         
         public Student CreateModel()
         {
-            Student student = new Student
+            Student model = new Student
             {
                 Name = nameTextBox.Text,
                 Phone = phoneTextBox.Text,
-                DepartmentId = departmentComboBox.SelectedValue.ToString()
+                DepartmentId = departmentComboBox.SelectedValue.ToString(),                
             };
-            student.SetCommonValues();
-            return student;
-        }       
+            model.SetCommonValues();
+            return model;
+        }
+ 
+    
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (cell.Value=="Delete")
+            {
+                bool confirmDelete = ShowDeleteAlert();
+                if (confirmDelete)
+                {
+                    var id = dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                    bool deleted = App.StudentService.Delete(id);
+                    LoadGridView();
+                    MessageBox.Show(this, "Deleted", "Successful", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private bool ShowDeleteAlert()
+        {
+            var result = MessageBox.Show(this, "Delete this?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return result==DialogResult.Yes;
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace ConsumerWinFormsApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Constants.UserName = "foyzulkarim@gmail.com";
             Application.Run(new Form1());
         }
     }
