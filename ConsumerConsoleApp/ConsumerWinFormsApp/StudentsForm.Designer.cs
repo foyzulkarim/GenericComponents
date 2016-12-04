@@ -44,6 +44,8 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.departmentComboBox = new System.Windows.Forms.ComboBox();
             this.studentTabControl.SuspendLayout();
             this.studentEntryTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -72,7 +74,7 @@
             this.studentEntryTabPage.Location = new System.Drawing.Point(4, 44);
             this.studentEntryTabPage.Name = "studentEntryTabPage";
             this.studentEntryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.studentEntryTabPage.Size = new System.Drawing.Size(614, 505);
+            this.studentEntryTabPage.Size = new System.Drawing.Size(934, 505);
             this.studentEntryTabPage.TabIndex = 0;
             this.studentEntryTabPage.Text = "New Student";
             this.studentEntryTabPage.UseVisualStyleBackColor = true;
@@ -86,22 +88,25 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.nameTextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.departmentComboBox, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 162F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(608, 499);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(928, 499);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(128, 53);
+            this.phoneTextBox.Location = new System.Drawing.Point(195, 53);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(387, 22);
             this.phoneTextBox.TabIndex = 3;
@@ -110,7 +115,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Location = new System.Drawing.Point(73, 50);
+            this.label2.Location = new System.Drawing.Point(140, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 30);
             this.label2.TabIndex = 2;
@@ -120,7 +125,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(77, 20);
+            this.label1.Location = new System.Drawing.Point(144, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 30);
             this.label1.TabIndex = 0;
@@ -128,7 +133,7 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(128, 23);
+            this.nameTextBox.Location = new System.Drawing.Point(195, 23);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(387, 22);
             this.nameTextBox.TabIndex = 1;
@@ -138,9 +143,9 @@
             this.flowLayoutPanel1.Controls.Add(this.saveButton);
             this.flowLayoutPanel1.Controls.Add(this.clearButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(128, 83);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(195, 113);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(477, 156);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(730, 156);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // saveButton
@@ -232,6 +237,25 @@
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label3.Location = new System.Drawing.Point(100, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 30);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Departments";
+            // 
+            // departmentComboBox
+            // 
+            this.departmentComboBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.departmentComboBox.FormattingEnabled = true;
+            this.departmentComboBox.Location = new System.Drawing.Point(195, 83);
+            this.departmentComboBox.Name = "departmentComboBox";
+            this.departmentComboBox.Size = new System.Drawing.Size(387, 24);
+            this.departmentComboBox.TabIndex = 6;
+            // 
             // StudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -274,5 +298,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox departmentComboBox;
     }
 }

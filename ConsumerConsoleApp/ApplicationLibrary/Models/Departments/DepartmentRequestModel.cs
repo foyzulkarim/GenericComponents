@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Linq;
 using System.Linq.Expressions;
 using Commons.RequestModel;
+using Commons.ViewModel;
 
 namespace ApplicationLibrary.Models.Departments
 {
     public class DepartmentRequestModel : RequestModel<Department>
     {
-        public DepartmentRequestModel(string keyword, string orderBy = "Modified", string isAscending="false") : base(keyword, orderBy, isAscending)
+        public DepartmentRequestModel(string keyword="", string orderBy = "Modified", string isAscending="false") : base(keyword, orderBy, isAscending)
         {
         }
 
@@ -19,6 +21,16 @@ namespace ApplicationLibrary.Models.Departments
             }
             ExpressionObj = ExpressionObj.And(GenerateBaseEntityExpression());
             return ExpressionObj;
+        }
+
+        public override IQueryable<Department> IncludeParents(IQueryable<Department> queryable)
+        {
+            return queryable;
+        }
+
+        public override Expression<Func<Department, DropdownViewModel>> Dropdown()
+        {
+            return x=>new DropdownViewModel(x.Id,x.Name);
         }
     }
 }

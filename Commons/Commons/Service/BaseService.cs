@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Commons.Model;
 using Commons.Repository;
@@ -52,20 +53,8 @@ namespace Commons.Service
         public T GetById(string id)
         {
             return Repository.GetById(id);
-        }
-        
-        public async Task<int> CountAsync(TRm request)
-        {
-            var queryable = request.GetOrderedData(Repository.Get());
-            var count = await queryable.CountAsync();
-            return count;
-        }
-
-        //public async Task<List<TVm>> GetAllAsync()
-        //{
-        //    return await Repository.Get().Select(x => (TVm)Activator.CreateInstance(typeof(TVm), x)).ToListAsync();
-        //}
-
+        }         
+         
         public async Task<List<TVm>> GetAllAsync()
         {
             var queryable = await Repository.Get().ToListAsync();
@@ -73,11 +62,20 @@ namespace Commons.Service
             return  vms.ToList();
         }
 
+        public async Task<List<DropdownViewModel>> GetDropdownListAsync(TRm request)
+        {
+            IQueryable<T> queryable = Repository.Get();
+            queryable = request.GetOrderedData(queryable);
+            List<DropdownViewModel> list= await queryable.Select(request.Dropdown()).ToListAsync();
+            return list;
+        }
+        
         public async Task<Tuple<List<TVm>,int>> SearchAsync(TRm request)
         {
             var queryable = request.GetOrderedData(Repository.Get());
             int count = queryable.Count();
             queryable = request.SkipAndTake(queryable);
+            queryable = request.IncludeParents(queryable);
             var list = await queryable.ToListAsync();
             List<TVm> vms = list.ConvertAll(CreateVmInstance);
             return new Tuple<List<TVm>, int>(vms,count);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Commons.Model;
+using Commons.ViewModel;
 
 namespace Commons.RequestModel
 {
@@ -52,6 +53,7 @@ namespace Commons.RequestModel
         public string Keyword { get; set; }
         public string ParentId { get; set; }
         public string ShopId { get; set; }
+
         protected Func<IQueryable<TSource>, IOrderedQueryable<TSource>> OrderByFunc<TSource>()
         {
             string propertyName = Request.PropertyName;
@@ -68,9 +70,9 @@ namespace Commons.RequestModel
             var func = expr.Compile();
             return func;
         }
-
         protected abstract Expression<Func<TModel, bool>> GetExpression();
-
+        public abstract IQueryable<TModel> IncludeParents(IQueryable<TModel> queryable);
+        public abstract Expression<Func<TModel, DropdownViewModel>> Dropdown();
         public IQueryable<TModel> GetOrderedData(IQueryable<TModel> queryable)
         {
             queryable = queryable.Where(GetExpression());
@@ -111,9 +113,7 @@ namespace Commons.RequestModel
                 ExpressionObj = ExpressionObj.And(x => x.Created >= StartDate && x.Created <= EndDate);
             }
             return ExpressionObj;
-        }
-
-     
+        }     
     }
 
     public static class ExpressionHelper

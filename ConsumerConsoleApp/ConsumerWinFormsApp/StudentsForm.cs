@@ -52,8 +52,9 @@ namespace ConsumerWinFormsApp
 
         private void StudentsForm_Load(object sender, EventArgs e)
         {
-            BaseRepository<Student> repository = new BaseRepository<Student>(new BusinessDbContext());
-            service = new BaseService<Student, StudentRequestModel, StudentViewModel>(repository);
+            BusinessDbContext dbContext = new BusinessDbContext();
+            BaseRepository<Student> studentRepository = new BaseRepository<Student>(dbContext);
+            service = new BaseService<Student, StudentRequestModel, StudentViewModel>(studentRepository);
             request = new StudentRequestModel("");
             searchTextBox.DataBindings.Add("Text", request, "Keyword");
             
