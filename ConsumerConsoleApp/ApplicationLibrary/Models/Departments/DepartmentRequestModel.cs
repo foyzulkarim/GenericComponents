@@ -30,7 +30,11 @@ namespace ApplicationLibrary.Models.Departments
 
         public override Expression<Func<Department, DropdownViewModel>> Dropdown()
         {
-            return x=>new DropdownViewModel(x.Id,x.Name);
+            return x => new DropdownViewModel()
+            {
+                Id = x.Id,
+                Text = x.Name
+            };
         }
     }
 }

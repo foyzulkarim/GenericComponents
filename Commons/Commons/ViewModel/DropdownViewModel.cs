@@ -7,11 +7,11 @@ namespace Commons.ViewModel
             
         }
 
-        public DropdownViewModel(string id, string text)
-        {
-            Id = id;
-            Text = text;
-        }
+        //public DropdownViewModel(string id, string text)
+        //{
+        //    Id = id;
+        //    Text = text;
+        //}
 
         public string Id { get; set; }
         public string Text { get; set; }

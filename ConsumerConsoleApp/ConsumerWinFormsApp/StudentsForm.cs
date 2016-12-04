@@ -8,16 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ApplicationLibrary;
+using ApplicationLibrary.Models.Departments;
 using ApplicationLibrary.Models.Students;
 using Commons.Repository;
 using Commons.Service;
+using Commons.ViewModel;
 
 namespace ConsumerWinFormsApp
 {
     public partial class StudentsForm : Form
     {
-        BaseService<Student, StudentRequestModel, StudentViewModel> service;
-        private StudentRequestModel request;
+        BaseService<Student, StudentRequestModel, StudentViewModel> studentService;
+        BaseService<Department, DepartmentRequestModel, DepartmetnViewModel> departmentService;
+        private StudentRequestModel studentRequestModel;
+        
         public StudentsForm()
         {
             InitializeComponent();
@@ -34,7 +38,7 @@ namespace ConsumerWinFormsApp
             student.Modified = DateTime.Now;
             student.CreatedBy = "me";
             student.ModifiedBy = "me";
-            service.Add(student);
+            studentService.Add(student);
             MessageBox.Show("Saved");
             ClearForm();
         }
@@ -54,10 +58,15 @@ namespace ConsumerWinFormsApp
         {
             BusinessDbContext dbContext = new BusinessDbContext();
             BaseRepository<Student> studentRepository = new BaseRepository<Student>(dbContext);
-            service = new BaseService<Student, StudentRequestModel, StudentViewModel>(studentRepository);
-            request = new StudentRequestModel("");
-            searchTextBox.DataBindings.Add("Text", request, "Keyword");
-            
+            studentService = new BaseService<Student, StudentRequestModel, StudentViewModel>(studentRepository);
+            studentRequestModel = new StudentRequestModel("");
+            searchTextBox.DataBindings.Add("Text", studentRequestModel, "Keyword");
+            var departmentRepository = new BaseRepository<Department>(dbContext);
+            departmentService = new BaseService<Department, DepartmentRequestModel, DepartmetnViewModel>(departmentRepository);
+            List<DropdownViewModel> departments = departmentService.GetDropdownListAsync(new DepartmentRequestModel());
+            departmentComboBox.DataSource = departments;
+            departmentComboBox.DisplayMember = "Text";
+            departmentComboBox.ValueMember = "Id";
         }       
 
         private  void studentListTabPage_Enter(object sender, EventArgs e)
@@ -72,7 +81,7 @@ namespace ConsumerWinFormsApp
 
         private async Task SearchStudents()
         {         
-            var result = await service.SearchAsync(request);         
+            var result = await studentService.SearchAsync(studentRequestModel);         
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = result.Item1;            
         }

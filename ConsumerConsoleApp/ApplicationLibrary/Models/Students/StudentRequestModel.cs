@@ -29,7 +29,11 @@ namespace ApplicationLibrary.Models.Students
  
         public override Expression<Func<Student, DropdownViewModel>> Dropdown()
         {
-            return x => new DropdownViewModel(x.Id, x.Name);
+            return x => new DropdownViewModel()
+            {
+                Id = x.Id,
+                Text = x.Name
+            };
         }
 
         public override IQueryable<Student> IncludeParents(IQueryable<Student> students)

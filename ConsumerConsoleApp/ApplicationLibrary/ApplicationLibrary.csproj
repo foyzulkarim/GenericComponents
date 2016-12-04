@@ -54,6 +54,10 @@
     <Compile Include="Migrations\201612030350205_StudentDepartment.Designer.cs">
       <DependentUpon>201612030350205_StudentDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612040332398_dontknowwhatischagned.cs" />
+    <Compile Include="Migrations\201612040332398_dontknowwhatischagned.Designer.cs">
+      <DependentUpon>201612040332398_dontknowwhatischagned.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Departments\Department.cs" />
     <Compile Include="Models\Departments\DepartmentRequestModel.cs" />
@@ -76,6 +80,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612030350205_StudentDepartment.resx">
       <DependentUpon>201612030350205_StudentDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612040332398_dontknowwhatischagned.resx">
+      <DependentUpon>201612040332398_dontknowwhatischagned.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

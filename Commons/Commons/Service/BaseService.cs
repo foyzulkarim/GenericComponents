@@ -61,12 +61,12 @@ namespace Commons.Service
             var vms = queryable.Select(x => (TVm) Activator.CreateInstance(typeof(TVm), new object[] {x}));
             return  vms.ToList();
         }
-
-        public async Task<List<DropdownViewModel>> GetDropdownListAsync(TRm request)
+       
+        public List<DropdownViewModel> GetDropdownListAsync(TRm request)
         {
             IQueryable<T> queryable = Repository.Get();
             queryable = request.GetOrderedData(queryable);
-            List<DropdownViewModel> list= await queryable.Select(request.Dropdown()).ToListAsync();
+            List<DropdownViewModel> list = queryable.Select(request.Dropdown()).ToList();
             return list;
         }
         
