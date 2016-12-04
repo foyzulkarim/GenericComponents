@@ -27,5 +27,11 @@ namespace ConsumerWinFormsApp
         {
           this.Close();
         }
+
+        private void departmentsButton_Click(object sender, EventArgs e)
+        {
+            DepartmentForm form = new DepartmentForm();
+            form.ShowDialog(this);
+        }
     }
 }

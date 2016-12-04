@@ -45,10 +45,10 @@ namespace ConsumerWinFormsApp
             this.studentListTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.studentTabControl.SuspendLayout();
             this.studentEntryTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -68,7 +68,7 @@ namespace ConsumerWinFormsApp
             this.studentTabControl.Location = new System.Drawing.Point(0, 0);
             this.studentTabControl.Name = "studentTabControl";
             this.studentTabControl.SelectedIndex = 0;
-            this.studentTabControl.Size = new System.Drawing.Size(942, 553);
+            this.studentTabControl.Size = new System.Drawing.Size(942, 593);
             this.studentTabControl.TabIndex = 0;
             // 
             // studentEntryTabPage
@@ -77,7 +77,7 @@ namespace ConsumerWinFormsApp
             this.studentEntryTabPage.Location = new System.Drawing.Point(4, 44);
             this.studentEntryTabPage.Name = "studentEntryTabPage";
             this.studentEntryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.studentEntryTabPage.Size = new System.Drawing.Size(934, 505);
+            this.studentEntryTabPage.Size = new System.Drawing.Size(934, 545);
             this.studentEntryTabPage.TabIndex = 0;
             this.studentEntryTabPage.Text = "New Student";
             this.studentEntryTabPage.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@ namespace ConsumerWinFormsApp
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 162F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(928, 499);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(928, 539);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // phoneTextBox
@@ -195,7 +195,7 @@ namespace ConsumerWinFormsApp
             this.studentListTabPage.Location = new System.Drawing.Point(4, 44);
             this.studentListTabPage.Name = "studentListTabPage";
             this.studentListTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.studentListTabPage.Size = new System.Drawing.Size(934, 505);
+            this.studentListTabPage.Size = new System.Drawing.Size(934, 545);
             this.studentListTabPage.TabIndex = 1;
             this.studentListTabPage.Text = "Students List";
             this.studentListTabPage.UseVisualStyleBackColor = true;
@@ -213,7 +213,7 @@ namespace ConsumerWinFormsApp
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(928, 499);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(928, 539);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // dataGridView1
@@ -230,9 +230,17 @@ namespace ConsumerWinFormsApp
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(922, 443);
+            this.dataGridView1.Size = new System.Drawing.Size(922, 483);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // DeleteColumn
+            // 
+            this.DeleteColumn.HeaderText = "Delete";
+            this.DeleteColumn.Name = "DeleteColumn";
+            this.DeleteColumn.ReadOnly = true;
+            this.DeleteColumn.Text = "Delete";
+            this.DeleteColumn.UseColumnTextForButtonValue = true;
             // 
             // flowLayoutPanel2
             // 
@@ -261,19 +269,11 @@ namespace ConsumerWinFormsApp
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             // 
-            // DeleteColumn
-            // 
-            this.DeleteColumn.HeaderText = "Delete";
-            this.DeleteColumn.Name = "DeleteColumn";
-            this.DeleteColumn.ReadOnly = true;
-            this.DeleteColumn.Text = "Delete";
-            this.DeleteColumn.UseColumnTextForButtonValue = true;
-            // 
             // StudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 553);
+            this.ClientSize = new System.Drawing.Size(942, 593);
             this.Controls.Add(this.studentTabControl);
             this.Name = "StudentsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

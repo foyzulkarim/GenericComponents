@@ -12,7 +12,6 @@ namespace ConsumerWinFormsApp
     {
         T CreateModel();
         void ClearForm();   
-        Task LoadGridView();
-        void LoadDropdown();
+        Task LoadGridView();       
     }
 }

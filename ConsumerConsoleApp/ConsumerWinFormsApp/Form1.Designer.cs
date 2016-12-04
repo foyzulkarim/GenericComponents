@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.studentsButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.departmentsButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -44,14 +44,15 @@
             this.studentsButton.UseVisualStyleBackColor = true;
             this.studentsButton.Click += new System.EventHandler(this.studentsButton_Click);
             // 
-            // button2
+            // departmentsButton
             // 
-            this.button2.Location = new System.Drawing.Point(235, 25);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(168, 73);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Departments";
-            this.button2.UseVisualStyleBackColor = true;
+            this.departmentsButton.Location = new System.Drawing.Point(235, 25);
+            this.departmentsButton.Name = "departmentsButton";
+            this.departmentsButton.Size = new System.Drawing.Size(168, 73);
+            this.departmentsButton.TabIndex = 1;
+            this.departmentsButton.Text = "Departments";
+            this.departmentsButton.UseVisualStyleBackColor = true;
+            this.departmentsButton.Click += new System.EventHandler(this.departmentsButton_Click);
             // 
             // button3
             // 
@@ -79,7 +80,7 @@
             this.ClientSize = new System.Drawing.Size(623, 512);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.departmentsButton);
             this.Controls.Add(this.studentsButton);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -91,7 +92,7 @@
         #endregion
 
         private System.Windows.Forms.Button studentsButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button departmentsButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button closeButton;
     }
