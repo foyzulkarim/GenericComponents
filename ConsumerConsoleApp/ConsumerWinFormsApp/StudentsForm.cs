@@ -29,7 +29,6 @@ namespace ConsumerWinFormsApp
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-
             Student student = new Student();
             student.Name = nameTextBox.Text;
             student.Phone = phoneTextBox.Text;
@@ -38,6 +37,7 @@ namespace ConsumerWinFormsApp
             student.Modified = DateTime.Now;
             student.CreatedBy = "me";
             student.ModifiedBy = "me";
+            student.DepartmentId = departmentComboBox.SelectedValue.ToString();
             studentService.Add(student);
             MessageBox.Show("Saved");
             ClearForm();

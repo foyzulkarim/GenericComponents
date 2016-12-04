@@ -9,7 +9,7 @@ namespace ApplicationLibrary.Models.Students
         {
             Name = x.Name;
             Phone = x.Phone;
-            if (x.Department==null)
+            if (x.Department!=null)
             {
                 Department = new DepartmetnViewModel(x.Department);
                 DepartmentName = this.Department.Name;
