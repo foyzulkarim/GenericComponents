@@ -1,16 +1,8 @@
-using System;
 using ApplicationLibrary.Models.Departments;
 using Commons.ViewModel;
 
 namespace ApplicationLibrary.Models.Students
 {
-    [AttributeUsage(AttributeTargets.Property)]
-    public class IsViewable: Attribute
-    {
-        public bool Value { get; set; }
-    }
-
-
     public class StudentViewModel : BaseViewModel<Student>
     {
         public StudentViewModel(Student x) : base(x)
@@ -24,11 +16,13 @@ namespace ApplicationLibrary.Models.Students
             }            
         }
 
+        [IsViewable(Value = true)]
         public string Phone { get; set; }
 
         [IsViewable(Value = true)]
         public string Name { get; set; }
 
+        [IsViewable(Value = true)]
         public string DepartmentName { get; set; }
 
         public DepartmetnViewModel Department { get; set; }

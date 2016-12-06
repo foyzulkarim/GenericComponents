@@ -59,6 +59,7 @@
     <Compile Include="Service\IBaseService.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\DropdownViewModel.cs" />
+    <Compile Include="ViewModel\IsViewable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
