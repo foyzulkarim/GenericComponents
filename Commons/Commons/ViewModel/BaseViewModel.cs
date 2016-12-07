@@ -13,7 +13,8 @@ namespace Commons.ViewModel
             Modified = x.Modified;
             ModifiedBy = x.ModifiedBy;
         }
-        
+
+        [IsViewable(Value = true)]
         public string Id { get; set; }
 
         public DateTime Created { get; set; }
