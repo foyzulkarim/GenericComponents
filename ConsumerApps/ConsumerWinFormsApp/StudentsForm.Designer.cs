@@ -49,6 +49,8 @@ namespace ConsumerWinFormsApp
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.studentListTabPage2 = new System.Windows.Forms.TabPage();
+            this.userControl11 = new ConsumerWinFormsApp.UserControls.UserControl1();
             this.studentTabControl.SuspendLayout();
             this.studentEntryTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -57,12 +59,14 @@ namespace ConsumerWinFormsApp
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
+            this.studentListTabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // studentTabControl
             // 
             this.studentTabControl.Controls.Add(this.studentEntryTabPage);
             this.studentTabControl.Controls.Add(this.studentListTabPage);
+            this.studentTabControl.Controls.Add(this.studentListTabPage2);
             this.studentTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.studentTabControl.ItemSize = new System.Drawing.Size(75, 40);
             this.studentTabControl.Location = new System.Drawing.Point(0, 0);
@@ -269,6 +273,26 @@ namespace ConsumerWinFormsApp
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             // 
+            // studentListTabPage2
+            // 
+            this.studentListTabPage2.Controls.Add(this.userControl11);
+            this.studentListTabPage2.Location = new System.Drawing.Point(4, 44);
+            this.studentListTabPage2.Name = "studentListTabPage2";
+            this.studentListTabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.studentListTabPage2.Size = new System.Drawing.Size(934, 545);
+            this.studentListTabPage2.TabIndex = 2;
+            this.studentListTabPage2.Text = "tabPage1";
+            this.studentListTabPage2.UseVisualStyleBackColor = true;
+            this.studentListTabPage2.Enter += new System.EventHandler(this.studentListTabPage2_Enter);
+            // 
+            // userControl11
+            // 
+            this.userControl11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControl11.Location = new System.Drawing.Point(3, 3);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(928, 539);
+            this.userControl11.TabIndex = 0;
+            // 
             // StudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -289,6 +313,7 @@ namespace ConsumerWinFormsApp
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.studentListTabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -314,5 +339,7 @@ namespace ConsumerWinFormsApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox departmentComboBox;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteColumn;
+        private System.Windows.Forms.TabPage studentListTabPage2;
+        private UserControls.UserControl1 userControl11;
     }
 }

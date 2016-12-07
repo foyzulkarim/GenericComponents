@@ -27,6 +27,7 @@ namespace ConsumerWinFormsApp
             Load += Form_Load;
             saveButton.Click += saveButton_Click;
             searchButton.Click += searchButton_Click;
+            
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -126,6 +127,18 @@ namespace ConsumerWinFormsApp
         {
             var result = MessageBox.Show(this, "Delete this?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             return result == DialogResult.Yes;
+        }
+
+        private void studentListTabPage2_Enter(object sender, EventArgs e)
+        {
+            LoadGridView2();
+        }
+
+        public async Task LoadGridView2()
+        {
+            var result = await App.StudentService.SearchAsync(studentRequestModel);
+            dataGridView1.DataSource = null;
+            userControl11.DataGridView.DataSource = result.Item1.OfType<object>().ToList().ConvertToViewableDynamicList();
         }
     }
 }
