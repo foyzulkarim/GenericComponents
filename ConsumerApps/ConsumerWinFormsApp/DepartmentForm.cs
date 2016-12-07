@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ApplicationLibrary.Models.Departments;
 using ApplicationLibrary.Models.Students;
+using Commons.Utility;
 using Commons.ViewModel;
 
 namespace ConsumerWinFormsApp
@@ -73,9 +74,9 @@ namespace ConsumerWinFormsApp
 
         public async Task LoadGridView()
         {
-            dataGridView1.DataSource = null;
             Tuple<List<DepartmetnViewModel>, int> result = await App.DepartmentService.SearchAsync(requestModel);
-            dataGridView1.DataSource = result.Item1;            
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = result.Item1.OfType<object>().ToList().ConvertToViewableDynamicList();            
         }  
     }
 }

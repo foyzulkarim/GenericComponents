@@ -9,6 +9,7 @@ namespace ApplicationLibrary.Models.Departments
             Name = x.Name;
         }
 
+        [IsViewable(Value = true)]
         public string Name { get; set; }
     }
 }

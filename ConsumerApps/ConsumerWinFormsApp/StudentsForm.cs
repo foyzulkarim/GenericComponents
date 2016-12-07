@@ -84,9 +84,10 @@ namespace ConsumerWinFormsApp
         {
             var result = await App.StudentService.SearchAsync(studentRequestModel);
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = result.Item1.OfType<object>().ToList().ConvertToViewableDynamicList();
+            List<object> objects = result.Item1.OfType<object>().ToList();
+            dataGridView1.DataSource = objects.ConvertToViewableDynamicList();
         }
-        
+
         public void LoadDropdown()
         {
             departmentComboBox.DataSource = App.DepartmentService.GetDropdownListAsync(new DepartmentRequestModel());
