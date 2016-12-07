@@ -10,6 +10,7 @@ using ApplicationLibrary.Models.Departments;
 using ApplicationLibrary.Models.Students;
 using Commons.Model;
 using Commons.Service;
+using Commons.Utility;
 using Commons.ViewModel;
 using Newtonsoft.Json;
 
@@ -81,36 +82,11 @@ namespace ConsumerWinFormsApp
 
         public async Task LoadGridView()
         {
-            Tuple<List<StudentViewModel>, int> result = await App.StudentService.SearchAsync(studentRequestModel);
+            var result = await App.StudentService.SearchAsync(studentRequestModel);
             dataGridView1.DataSource = null;
-            Type type = typeof(StudentViewModel);
-            PropertyInfo[] properties = type.GetProperties();
-            List<PropertyInfo> infos = properties
-                .Where(x => x.CustomAttributes.Any(y => y.AttributeType == typeof(IsViewable))).ToList();
-            List<StudentViewModel> models = result.Item1;
-            List<dynamic> list = models.Select(x => GetValue(x, infos)).ToList();
-            string serializeObject = JsonConvert.SerializeObject(list);
-            List<dynamic> deserializeObject = JsonConvert.DeserializeObject<List<dynamic>>(serializeObject);
-            dataGridView1.DataSource = deserializeObject;
+            dataGridView1.DataSource = result.Item1.OfType<object>().ToList().ConvertToViewableDynamicList();
         }
-
-        private static object GetValue(object obj, List<PropertyInfo> propertyInfos)
-        {
-            Dictionary<string, object> dictionary = new Dictionary<string, object>();
-            foreach (var p in propertyInfos)
-            {
-                var value = p.GetValue(obj);
-                dictionary.Add(p.Name, value);
-            }
-            var expandoObject = new ExpandoObject();
-            var keyValuePairs = (ICollection<KeyValuePair<string, object>>)expandoObject;
-            foreach (var kvp in dictionary)
-            {
-                keyValuePairs.Add(kvp);
-            }
-            return expandoObject;
-        }
-
+        
         public void LoadDropdown()
         {
             departmentComboBox.DataSource = App.DepartmentService.GetDropdownListAsync(new DepartmentRequestModel());
