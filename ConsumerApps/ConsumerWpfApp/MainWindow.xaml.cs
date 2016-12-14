@@ -26,32 +26,57 @@ namespace ConsumerWpfApp
         public MainWindow()
         {
             InitializeComponent();
-            dataGrid.SelectionMode = DataGridSelectionMode.Single;
             this.Loaded += MainWindow_Loaded;
-            dataGrid.MouseDoubleClick += DataGrid_MouseDoubleClick;
+            tabControl.SelectionChanged += TabControl_SelectionChanged;
+
         }
 
-        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            if (tabControl.SelectedIndex==0)
+            {
+                var x = "test";
+            }
+            else
+            {
+                DetailsGrid.Children.Clear();
+                var list1 = Enum.GetNames(typeof(DayOfWeek)).ToList().Select(x => new { Name = x, Value = x }).ToList();
+                var list = new ObservableCollection<dynamic>(list1);
+                var comboBox = CreateComboBox("test", 1, 3);
+                comboBox.ItemsSource = list;
+                comboBox.DisplayMemberPath = "Name";
+                comboBox.SelectedValuePath = "Value";
+                comboBox.SelectedIndex = 0;
+                comboBox.SelectionChanged += Box1_SelectionChanged;
+                DetailsGrid.Children.Add(comboBox);
+            }
         }
-        
+
+        private void Box1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox c = sender as ComboBox;
+            var d = e.AddedItems[0] as dynamic;
+            int i = c.SelectedIndex;            
+        }
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadGrid();
+            var d = DateTime.Now;
         }
 
-        private async Task LoadGrid()
+
+        public static ComboBox CreateComboBox(string x, int columnIndex, int rowIndex)
         {
-            StudentRequestModel r = new StudentRequestModel();
-            var result = await AppFactory.StudentService.SearchAsync(r);
-            dataGrid.ItemsSource = result.Item1.OfType<object>().ToList().ConvertToViewableDynamicList();
-            DataGridColumn firstOrDefault = dataGrid.Columns.FirstOrDefault(x => x.Header.ToString() == "Id");
-            if (firstOrDefault != null)
+            var element = new ComboBox()
             {
-                int displayIndex = firstOrDefault.DisplayIndex;
-                dataGrid.Columns[displayIndex].Visibility = Visibility.Hidden;
-            }
+                Name = x + "ComboBox",
+                Margin = new Thickness(5),
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Stretch
+            };
+            Grid.SetColumn(element, columnIndex);
+            Grid.SetRow(element, rowIndex);
+            return element;
         }
     }
 }
