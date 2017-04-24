@@ -28,7 +28,14 @@ namespace Model
             return new BusinessDbContext();
         }
 
-        //tables        
-        public DbSet<Customer> Customers { get; set; }     
+        // tables go here
+
+        /// <summary>
+        /// Gets or sets the customers.
+        /// </summary>
+        /// <value>
+        /// The customers.
+        /// </value>
+        public DbSet<Customer> Customers { get; set; }
     }
 }
