@@ -15,6 +15,8 @@ namespace Model
         public DateTime Modified { get; set; }
         [Required]
         public string ModifiedBy { get; set; }
+		
+		public string CreatedFrom { get; set; }
     }
 
 }
