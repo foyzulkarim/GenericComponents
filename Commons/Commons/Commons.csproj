@@ -53,11 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\BusinessConstants.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
+    <Compile Include="RequestModel\ExpressionHelper.cs" />
+    <Compile Include="RequestModel\ParameterRebinder.cs" />
+    <Compile Include="RequestModel\ReplaceExpressionVisitor.cs" />
     <Compile Include="RequestModel\RequestHelperModels.cs" />
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\IBaseService.cs" />
